@@ -35,6 +35,7 @@ steps:
   inputs:
     archiveFilePatterns: 'ffmpeg.zip'
     destinationFolder: src\out\ffmpeg
+    cleanDestinationFolder: false
   displayName: 'Unzip ffmpeg files for test'
 
 - powershell: |
@@ -49,6 +50,7 @@ steps:
   inputs:
     archiveFilePatterns: 'mksnapshot.zip'
     destinationFolder: src\out\Default
+    cleanDestinationFolder: false
   displayName: 'Unzip mksnapshot for test'
 
 - powershell: |
@@ -63,6 +65,7 @@ steps:
   inputs:
     archiveFilePatterns: 'node_headers.zip'
     destinationFolder: src
+    cleanDestinationFolder: false
   displayName: 'Unzip node headers for test'
 
 - powershell: |
