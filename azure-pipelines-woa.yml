@@ -43,7 +43,7 @@ steps:
     $serverArtifactPath = "$env:APPVEYOR_URL/buildjobs/$env:APPVEYOR_JOB_ID/artifacts/mksnapshot.zip"
     Invoke-RestMethod -Method Get -Uri $serverArtifactPath -OutFile $localArtifactPath -Headers @{ "Authorization" = "Bearer $env:APPVEYOR_TOKEN" }
     cd src\out\Default 
-    unzip -o mksnapshot.zip
+    7z x -y mksnapshot.zip
   displayName: 'Download and unzip mksnapshot.zip for test'
   env:
     APPVEYOR_TOKEN: $(APPVEYOR_TOKEN)
@@ -53,7 +53,7 @@ steps:
     $serverArtifactPath = "$env:APPVEYOR_URL/buildjobs/$env:APPVEYOR_JOB_ID/artifacts/node_headers.zip"
     Invoke-RestMethod -Method Get -Uri $serverArtifactPath -OutFile $localArtifactPath -Headers @{ "Authorization" = "Bearer $env:APPVEYOR_TOKEN" }
     cd src
-    unzip -o node_headers.zip
+    7z x -y node_headers.zip
   displayName: 'Download node headers for test'
   env:
     APPVEYOR_TOKEN: $(APPVEYOR_TOKEN)
@@ -81,7 +81,6 @@ steps:
 - script: |
     cd src
     echo "Running test suite"
-    dir out\Default
     .\out\Default\electron.exe electron\spec --ci --enable-logging
     echo "Done running test suite"
   displayName: 'Run Electron tests'
