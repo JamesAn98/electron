@@ -43,7 +43,7 @@ steps:
     $serverArtifactPath = "$env:APPVEYOR_URL/buildjobs/$env:APPVEYOR_JOB_ID/artifacts/mksnapshot.zip"
     Invoke-RestMethod -Method Get -Uri $serverArtifactPath -OutFile $localArtifactPath -Headers @{ "Authorization" = "Bearer $env:APPVEYOR_TOKEN" }
     cd src\out\Default 
-    7z x -y mksnapshot.zip
+    & "${env:ProgramFiles(x86)}\7-Zip\7z.exe" x -y mksnapshot.zip
   displayName: 'Download and unzip mksnapshot.zip for test'
   env:
     APPVEYOR_TOKEN: $(APPVEYOR_TOKEN)
