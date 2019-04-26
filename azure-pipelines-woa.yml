@@ -88,6 +88,7 @@ steps:
 - script: |
     cd src
     echo "Running test suite"
+    dir out\Default
     .\out\Default\electron.exe electron\spec --ci --enable-logging
     echo "Done running test suite"
   displayName: 'Run Electron tests'
